@@ -1,0 +1,361 @@
+# Task 3: Design Responsive Web Layouts
+
+## Aim
+
+To design responsive web layouts using HTML and CSS, including a sidebar, product card using the CSS box model, and a 3-column blog layout using Flexbox and media queries.
+
+## Complete Code
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Web Layout</title>
+
+    <style>
+
+        /* Basic CSS */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Sidebar Layout */
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            min-height: 400px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Product Card */
+        .product-card {
+            width: 250px;
+
+            /* CSS Box Model */
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #333;
+
+            background-color: white;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+        }
+
+        .product-card h2 {
+            margin: 10px;
+        }
+
+        .price {
+            color: green;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .buy-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Blog Section */
+        .blog-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .blog {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .blog h3 {
+            color: #333;
+        }
+
+        /* Mobile Responsive Design */
+        @media screen and (max-width: 600px) {
+
+            /* Sidebar moves to top */
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: auto;
+                min-height: auto;
+            }
+
+            /* Blogs become one column */
+            .blog-container {
+                flex-direction: column;
+            }
+
+            /* Product card becomes responsive */
+            .product-card {
+                width: auto;
+                margin: 10px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Responsive Website</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Menu</h2>
+
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+
+            <h2>Product Card</h2>
+
+            <!-- Product Card -->
+            <div class="product-card">
+
+                <img src="https://via.placeholder.com/250" 
+                     alt="Product Image">
+
+                <h2>Smart Watch</h2>
+
+                <p>Beautiful and useful smart watch.</p>
+
+                <p class="price">₹2,999</p>
+
+                <button class="buy-button">
+                    Buy Now
+                </button>
+
+            </div>
+
+
+            <h2>Latest Blogs</h2>
+
+            <!-- 3 Column Blog Layout -->
+            <div class="blog-container">
+
+                <div class="blog">
+                    <h3>HTML</h3>
+                    <p>
+                        HTML is used to create the structure
+                        of a webpage.
+                    </p>
+                </div>
+
+                <div class="blog">
+                    <h3>CSS</h3>
+                    <p>
+                        CSS is used to design and style
+                        webpages.
+                    </p>
+                </div>
+
+                <div class="blog">
+                    <h3>JavaScript</h3>
+                    <p>
+                        JavaScript is used to add
+                        functionality to webpages.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+```
+
+## Explanation
+
+### 1. Sidebar Layout
+
+```css
+.container {
+    display: flex;
+}
+```
+
+This places the **sidebar and main content side-by-side**.
+
+```css
+.sidebar {
+    width: 200px;
+}
+```
+
+This gives the sidebar a fixed width.
+
+---
+
+### 2. CSS Box Model
+
+The product card uses:
+
+```css
+.product-card {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #333;
+}
+```
+
+The CSS box model consists of:
+
+**Content → Padding → Border → Margin**
+
+* **Content** → Product information
+* **Padding** → Space inside the card
+* **Border** → Line around the card
+* **Margin** → Space outside the card
+
+---
+
+### 3. 3-Column Blog Layout
+
+```css
+.blog-container {
+    display: flex;
+    gap: 20px;
+}
+```
+
+Flexbox places the three blogs in one row.
+
+```css
+.blog {
+    flex: 1;
+}
+```
+
+`flex: 1` gives each blog approximately equal width.
+
+---
+
+### 4. Media Query
+
+```css
+@media screen and (max-width: 600px) {
+```
+
+This CSS runs when the screen width is **600px or less**, such as on a mobile phone.
+
+The sidebar moves to the top:
+
+```css
+.container {
+    flex-direction: column;
+}
+```
+
+And the three blogs become one column:
+
+```css
+.blog-container {
+    flex-direction: column;
+}
+```
+
+## Result
+
+### Desktop
+
+```text
+-----------------------------------
+       My Responsive Website
+-----------------------------------
+| Sidebar | Product Card          |
+|         |                       |
+| Home    | Latest Blogs          |
+| Product | --------------------- |
+| Blog    | Blog 1 | Blog 2 | Blog 3
+| Contact | --------------------- |
+-----------------------------------
+```
+
+### Mobile
+
+```text
+----------------------
+ My Responsive Website
+----------------------
+ Menu
+ Home
+ Products
+ Blog
+ Contact
+----------------------
+ Product Card
+ -------------------
+ |    Smart Watch  |
+ -------------------
+----------------------
+ Blog 1
+----------------------
+ Blog 2
+----------------------
+ Blog 3
+----------------------
+```
